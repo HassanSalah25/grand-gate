@@ -14,6 +14,8 @@ class ContactUsController extends Controller
     public function index()
     {
         //
+        $contacts = ContactUs::all();
+        return view('dashboard.contact.list',compact('contacts'));
     }
 
     /**
@@ -35,9 +37,10 @@ class ContactUsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ContactUs $contactUs)
+    public function show(ContactUs $contact)
     {
         //
+        return view('dashboard.contact.view',compact('contact'));
     }
 
     /**

@@ -9,4 +9,9 @@ class BlogTranslation extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function blogs()
+    {
+        return $this->belongsTo(Blog::class,'blog_id');
+    }
 }

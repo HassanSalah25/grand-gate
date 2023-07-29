@@ -21,6 +21,14 @@ class BlogController extends Controller
         return view('dashboard.blog.list',compact('blogs'));
     }
 
+    public function search(Request $request)
+    {
+        //
+        $blogs = BlogTranslation::with('blogs')->where('title','LIKE','%'.$request->search_query.'%')->get()->pluck('blogs');
+
+        return view('dashboard.blog.list',compact('blogs'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -20,6 +20,16 @@ class ProductController extends Controller
         return view('dashboard.product.list',compact('products'));
     }
 
+    public function search(Request $request)
+    {
+        //
+        $products = ProductTranslation::with('product')
+            ->where('name','LIKE','%'.$request->search_query.'%')
+            ->get()->pluck('product');
+
+        return view('dashboard.product.list',compact('products'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -21,6 +21,16 @@ class WorkExperienceController extends Controller
         return view('dashboard.work_experience.list',compact('workexps'));
     }
 
+    public function search(Request $request)
+    {
+        //
+        $workexps = WorkExperienceTranslation::with('wexps')
+            ->where('name','LIKE','%'.$request->search_query.'%')
+            ->get()->pluck('wexps');
+
+        return view('dashboard.work_experience.list',compact('workexps'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

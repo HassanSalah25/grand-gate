@@ -3,8 +3,7 @@
 @section('content')
 <div class="aiz-titlebar text-left mt-2 mb-3">
 	<div class="row align-items-center">
-		<div class="col">]
-
+		<div class="col">
             <h6 class="mb-0 fw-600">About Us Sections</h6>
 		</div>
 	</div>

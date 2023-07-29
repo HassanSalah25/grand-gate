@@ -10,6 +10,7 @@ Route::group(['prefix'=>'dashboard'],function () {
 
     Route::group(['prefix' => 'profile', 'as' => 'profile.'],function (){
         Route::get('/', 'ProfileController@index')->name('index');
+        Route::get('search/', 'ProfileController@search')->name('search');
         Route::get('create', 'ProfileController@create')->name('create');
         Route::post('store', 'ProfileController@store')->name('store');
         Route::get('destroy/{id}', 'ProfileController@destroy')->name('destroy');
@@ -20,6 +21,7 @@ Route::group(['prefix'=>'dashboard'],function () {
 
     Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
         Route::get('/', 'BlogController@index')->name('index');
+        Route::get('search/', 'BlogController@search')->name('search');
         Route::get('create', 'BlogController@create')->name('create');
         Route::post('store', 'BlogController@store')->name('store');
         Route::get('destroy/{id}', 'BlogController@destroy')->name('destroy');
@@ -29,6 +31,7 @@ Route::group(['prefix'=>'dashboard'],function () {
 
     Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
         Route::get('/', 'ProductController@index')->name('index');
+        Route::get('search/', 'ProductController@search')->name('search');
         Route::get('create', 'ProductController@create')->name('create');
         Route::post('store', 'ProductController@store')->name('store');
         Route::get('destroy/{id}', 'ProductController@destroy')->name('destroy');
@@ -38,6 +41,7 @@ Route::group(['prefix'=>'dashboard'],function () {
 
     Route::group(['prefix' => 'gallery', 'as' => 'gallery.'], function () {
         Route::get('/', 'GalleryController@index')->name('index');
+        Route::get('search/', 'GalleryController@search')->name('search');
         Route::get('create', 'GalleryController@create')->name('create');
         Route::post('store', 'GalleryController@store')->name('store');
         Route::get('destroy/{id}', 'GalleryController@destroy')->name('destroy');
@@ -47,6 +51,7 @@ Route::group(['prefix'=>'dashboard'],function () {
 
  Route::group(['prefix' => 'work_experience', 'as' => 'work_experience.'], function () {
         Route::get('/', 'WorkExperienceController@index')->name('index');
+        Route::get('search/', 'WorkExperienceController@search')->name('search');
         Route::get('create', 'WorkExperienceController@create')->name('create');
         Route::post('store', 'WorkExperienceController@store')->name('store');
         Route::get('destroy/{id}', 'WorkExperienceController@destroy')->name('destroy');
@@ -57,6 +62,7 @@ Route::group(['prefix'=>'dashboard'],function () {
 
     Route::group(['prefix' => 'appInfo','as'=>'appInfo.'],function (){
         Route::get('index', 'AppInfoController@index')->name('index');
+        Route::get('search', 'AppInfoController@search')->name('search');
         Route::get('create', 'AppInfoController@create')->name('create');
         Route::post('store', 'AppInfoController@store')->name('store');
         Route::get('destroy/{id}', 'AppInfoController@destroy')->name('destroy');
@@ -64,7 +70,18 @@ Route::group(['prefix'=>'dashboard'],function () {
         Route::post('update', 'AppInfoController@update')->name('update');
     });
 
+    Route::group(['prefix' => 'contact','as'=>'contact.'],function (){
+        Route::get('index', 'ContactUsController@index')->name('index');
+        Route::get('search', 'ContactUsController@search')->name('search');
+        Route::get('create', 'ContactUsController@create')->name('create');
+        Route::post('store', 'ContactUsController@store')->name('store');
+        Route::get('destroy/{id}', 'ContactUsController@destroy')->name('destroy');
+        Route::get('show/{contact}', 'ContactUsController@show')->name('show');
+        Route::post('update', 'ContactUsController@update')->name('update');
+    });
+
     Route::view('/pages', 'dashboard.pages.index')->name('pages.index');
+    Route::view('/pages/search','PageController@search')->name('pages.search');
     Route::resource('page','PageController');
     Route::get('page/delete/{id}','PageController@delete')->name('page.delete');
     Route::get('/custom-pages/edit/{id}', [PageController::class, 'edit'])->name('custom-pages.edit');

@@ -19,6 +19,16 @@ class ProfileController extends Controller
         return view('dashboard.profile.list',compact('admins'));
     }
 
+  /**
+     * Display a listing of the resource.
+     */
+    public function search(Request $request)
+    {
+        //
+        $admins = User::where('name','LIKE','%'.$request->search_query.'%')->get();
+        return view('dashboard.profile.list',compact('admins'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

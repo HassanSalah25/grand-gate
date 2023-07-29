@@ -1,4 +1,7 @@
 <!-- Navbar Start -->
+@php
+    $modelName = explode('.',Route::currentRouteName())[0]
+@endphp
 <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
     <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
         <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
@@ -6,9 +9,13 @@
     <a href="#" class="sidebar-toggler flex-shrink-0">
         <i class="fa fa-bars"></i>
     </a>
-    <form class="d-none d-md-flex ms-4">
-        <input class="form-control border-0" type="search" placeholder="Search">
-    </form>
+    @if($modelName == 'product' || $modelName == 'gallery'
+        || $modelName == 'work_experience' || $modelName == 'blog' )
+        <form action="{{route($modelName.'.search')}}" method="get" class="d-none d-md-flex ms-4">
+
+            <input class="form-control border-0" name="search_query" type="search" value="{{request('search_query')}}" placeholder="Search">
+        </form>
+    @endif
     <div class="navbar-nav align-items-center ms-auto">
        {{-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">

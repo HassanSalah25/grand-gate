@@ -19,6 +19,15 @@ class GalleryController extends Controller
         return view('dashboard.gallery.list',compact('galleries'));
     }
 
+    public function search(Request $request)
+    {
+        //
+        $galleries = Gallery::where('name','LIKE','%'.$request->search_query.'%')
+            ->get();
+
+        return view('dashboard.gallery.list',compact('galleries'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

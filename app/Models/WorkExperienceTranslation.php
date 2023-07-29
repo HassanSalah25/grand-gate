@@ -9,4 +9,8 @@ class WorkExperienceTranslation extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function wexps(){
+        return $this->belongsTo(WorkExperience::class,'work_experience_id');
+    }
 }

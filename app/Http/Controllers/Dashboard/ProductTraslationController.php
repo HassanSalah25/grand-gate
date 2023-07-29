@@ -20,6 +20,8 @@ class ProductTraslationController extends Controller
         return view('dashboard.product.list',compact('products'));
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      */
